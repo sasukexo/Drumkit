@@ -15,11 +15,14 @@ function handleClick(){
 var buttonInnerHTML=this.innerHTML;//to find the button which triggerred the event
 
 makeSound(buttonInnerHTML);
+buttonAnimation(buttonInnerHTML);
 
 }
 
 document.addEventListener("keydown",function(event){//event is the object which triggered the keydown event
     makeSound(event.key);//calling the function makeSound and passing the key property of the event object
+    buttonAnimation(event.key);//calling the function buttonAnimation and passing the key property of the event object
+
 })
 
 
@@ -67,4 +70,17 @@ function makeSound(key){
     
     
     }
+}
+
+
+function buttonAnimation(currentKey){
+
+    var activeButton= document.querySelector("."+ currentKey)
+    
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+            activeButton.classList.remove("pressed");
+        },100);
+   
 }
